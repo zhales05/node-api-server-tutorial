@@ -21,7 +21,6 @@ You can test out these endpoints in your web browser by navigating to [http://lo
 
 ## Completing the project
 
-The front end is already finished, but there are a few API endpoints that need to be implemented for the project to work.
 You need to implement the following endpoints:
 
 - `GET /api/trainers:id` (get a specific trainer)
