@@ -28,9 +28,9 @@ app.get('/api/trainers', function (request, response) {
  * It needs to receive a GET request at '/api/trainers/:id'
  * and call the `db.getTrainerById` function.
  */
-app.get('/api/trainers/:id', function (request, response) {
-  response.json(db.getTrainerById(request.params.id))
-})
+// app.get('/api/trainers/:id', function (request, response) {
+//   response.json(db.getTrainerById(request.params.id))
+// })
 
 /**
  * TODO: create an endpoint that adds a trainer to the database.
