@@ -48,8 +48,12 @@ http.createServer(function (req, res) {
   var urlObj = url.parse(req.url, true, false);
 
   if (urlObj.pathname === '/pokemon') {
-    res.writeHead(200)
-    res.end(JSON.stringify(pokemon))
+
+    /**
+     * TODO: return the array of pokemon above as a string
+     * with an header status of 'ok'
+     */
+
   } else {
     fs.readFile(ROOT_DIR + urlObj.pathname, function (err, data) {
       if (err) {
@@ -63,4 +67,6 @@ http.createServer(function (req, res) {
   }
 
 }).listen(port);
+
+console.log('app is now running on port: ' + port)
 
