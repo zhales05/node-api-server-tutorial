@@ -1,32 +1,17 @@
 # node-api-server-tutorial
-Simple introduction to creating a REST service and api with node and express
+Simple introduction to creating a REST service and api with node
 
 
 ## Running the server
 
-Clone the repository, then run these commands in the project folder:
+Clone the repository, then run this command in the project directory to run the server with the latest changes you've made to the `api-server.js` file:
+
 ```
-npm install
-npm start
+node api-server.js
 ```
 
-Now you can access the the API server ([http://localhost:4000](http://localhost:4000)).
+Now you can access the the app at ([http://localhost:4000/index.html](http://localhost:4000/index.html)).
 
-## Current API endpoints
+You should see a red background with instructions to "Set up your endpoint at `/pokemon` to get this view working".
 
-- `GET /api/trainers` (Get all the trainers in the database)
-- `GET /api/pokemon` (Get all the pokemon in the database)
-
-You can test out these endpoints in your web browser by navigating to [http://localhost:4000/api/trainers](http://localhost:4000/api/trainers) and [http://localhost:4000/api/pokemon](http://localhost:4000/api/pokemon). You can also format the JSON data that is returned with a Chrome extension - see below.
-
-## Completing the project
-
-You need to implement the following endpoints:
-
-- `GET /api/trainers:id` (get a specific trainer)
-- `GET /api/trainers:id/pokemon` (get the pokemon for a specific trainer)
-- `GET /api/pokemon/:id` (get a specific pokemon)
-- `POST /api/trainers` (add a trainer)
-- `POST /api/pokemon` (add a pokemon)
-
-See `api-server.js` for more help on how to create these endpoints.
+We will do this in the api-server.js file. Our goal is to send back the list of pokemon declared as an array at the top of the file when the UI requests it from the `/pokemon` endpoint. We will know this has worked when a blue screen listing the pokemon shows in our browser.
