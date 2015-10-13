@@ -20,7 +20,7 @@ var pokemon = [
     avatarUrl: 'http://rs1169.pbsrc.com/albums/r511/nthndo/tumblr_ljsx6dPMNm1qii50go1_400.gif~c200'
   },
   {
-    name: 'Clefairy',
+    name: 'Cleffa',
     avatarUrl: 'http://media1.giphy.com/media/pTh2K2xTJ1nag/giphy.gif'
   },
   {
