@@ -1,3 +1,6 @@
+/**
+ * This array of pokemon will represent a piece of data in our 'database'
+ */
 var pokemon = [
   {
     name: 'Pikachu',
@@ -43,6 +46,10 @@ http.createServer(function (req, res) {
      */
 
   } else {
+
+    /**
+     * Here is where we return all requests for files in our 'src' directory
+     */
     fs.readFile(ROOT_DIR + urlObj.pathname, function (err, data) {
       if (err) {
         res.writeHead(404);
