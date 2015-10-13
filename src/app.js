@@ -5,7 +5,7 @@ app.controller('mainCtrl', mainCtrl)
 
 function pokemonFetcher ($http) {
 
-  var API_ROOT = 'http://localhost:4000/pokemon'
+  var API_ROOT = 'pokemon'
   return {
     get: function () {
       return $http
