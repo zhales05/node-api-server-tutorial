@@ -1,40 +1,28 @@
-
 var pokemon = [
   {
-    id: 1,
-    trainerId: 1,
     name: 'Pikachu',
-    level: 35
+    avatarUrl: 'http://rs795.pbsrc.com/albums/yy232/PixKaruumi/Pokemon%20Pixels/Pikachu_Icon__free__by_Aminako.gif~c200'
   },
   {
-    id: 2,
-    trainerId: 1,
-    name: 'Charizard',
-    level: 40
+    name: 'Charmander',
+    avatarUrl: 'http://24.media.tumblr.com/tumblr_ma0tijLFPg1rfjowdo1_500.gif'
+
   },
   {
-    id: 3,
-    trainerId: 2,
-    name: 'Staryu',
-    level: 20
+    name: 'Mew',
+    avatarUrl: 'http://media3.giphy.com/media/J5JrPT8r1xGda/giphy.gif'
   },
   {
-    id: 4,
-    trainerId: 2,
-    name: 'Horsea',
-    level: 22
+    name: 'Cubone',
+    avatarUrl: 'http://rs1169.pbsrc.com/albums/r511/nthndo/tumblr_ljsx6dPMNm1qii50go1_400.gif~c200'
   },
   {
-    id: 5,
-    trainerId: 3,
-    name: 'Onyx',
-    level: 15
+    name: 'Clefairy',
+    avatarUrl: 'http://media1.giphy.com/media/pTh2K2xTJ1nag/giphy.gif'
   },
   {
-    id: 6,
-    trainerId: 3,
-    name: 'Geodude',
-    level: 13
+    name: 'Gengar',
+    avatarUrl: 'https://s-media-cache-ak0.pinimg.com/originals/7e/3b/67/7e3b67c53469cc4302035be70a7f2d60.gif'
   }
 ];
 

@@ -18,8 +18,9 @@
     </div>
 
     <ul ng-if='pokemon.length' class='list center stretch'>
-      <li ng-repeat='p in pokemon'>
+      <li ng-repeat='p in pokemon' class='pokemon'>
         <h1>{{ p.name }}</h1>
+        <img class='avatar' ng-src="{{p.avatarUrl}}" />
       </li>
     </ul>
 

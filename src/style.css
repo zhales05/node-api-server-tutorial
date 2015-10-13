@@ -25,7 +25,7 @@ div, ul {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .h1 {
@@ -33,7 +33,17 @@ div, ul {
   color: white;
 }
 
+.pokemon {
+  padding: 20px;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+}
+
 .list {
+  text-align: center;
   list-style: none;
   background-color: #4FC1E9;
   color: white;
