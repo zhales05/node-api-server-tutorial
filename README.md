@@ -5,6 +5,8 @@ We will show you how to take an existing application and put it into the express
 First create a new express server with
 <pre>
 express poki
+cd poki
+npm install
 </pre>
 
 Then checkout this repository
