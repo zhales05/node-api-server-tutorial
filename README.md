@@ -78,7 +78,6 @@ function pokemonFetcher ($http) {
     },
     tryit: function() {
       var politics = "https://zlzlap7j50.execute-api.us-east-1.amazonaws.com/prod";
-
       return $http
         .get(politics)
         .then(function (resp) {
@@ -110,6 +109,17 @@ function mainCtrl ($scope, pokemonFetcher) {
 You will get a CORS error on the console of your browser.
 
 So, lets make a proxy for this route in routes/index.js
+
+First add the request module to the top of your routes/index.js file
+<pre>
+var request = require('request')
+</pre>
+Then install the module
+<pre>
+npm install request --save
+</pre>
+
+Then use 'request' to pipe the output from the real URL back through the node server to your browser.
 <pre>
 var politics = "https://zlzlap7j50.execute-api.us-east-1.amazonaws.com/prod";
 router.get('/politics', function(req,res) {
