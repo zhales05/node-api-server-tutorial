@@ -86,7 +86,7 @@ Some of you may want to access a REST service that doesnt have the CORS headers 
 Lets say we want to get information about candidates from 'https://zlzlap7j50.execute-api.us-east-1.amazonaws.com/prod'
 
 If we put the URL into our angular controller  at public/javascripts/app.js with something like
-<pre>
+```javascript
 function pokemonFetcher ($http) {
   
   var API_ROOT = 'pokemon'
@@ -127,7 +127,7 @@ function mainCtrl ($scope, pokemonFetcher) {
       console.log(data);
     })
 }
-</pre>
+```
 You will get a CORS error on the console of your browser.
 
 So, lets make a proxy for this route in routes/index.js
@@ -142,13 +142,13 @@ npm install request --save
 </pre>
 
 Then use 'request' to pipe the output from the real URL back through the node server to your browser.
-<pre>
+```javascript
 var politics = "https://zlzlap7j50.execute-api.us-east-1.amazonaws.com/prod";
 router.get('/politics', function(req,res) {
   console.log("In politics");
   request(politics).pipe(res);
 });
-</pre>
+```
 
 Test the route by accessing the URL 'http://yourserver:3000/politics'
 
