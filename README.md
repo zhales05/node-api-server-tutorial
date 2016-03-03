@@ -156,3 +156,42 @@ And change our angular call to point to this route in public/javascripts/app.js
 <pre>
 var politics = "/politics";
 </pre>
+
+## What about saving a new pokimon?
+
+First add a form to the public/index.html file.
+```
+<h1> Enter A New Poki</h1>
+<form id="newPoki" ng-submit="addPoki()">
+  Name: <input type="text" ng-model="Name"> value=""><br>
+  Url: <input type="url" ng-model="Url"> value=""><br>
+  <input type="submit" value="Submit">
+</form>
+```
+
+And add the function to execute on the submit
+```javascript
+function addPoki() {
+  var formData = {name:$scope.Name,avatarUrl:$scope.Url};
+  console.log(formData);
+  var pokiURL = 'pokemon';
+  $http({
+     url: pokiURL,
+     method: "POST",
+     data: formData
+  }).success(function(data, status, headers, config) {
+    console.log("Post worked");
+  }).error(function(data, status, headers, config) {
+    console.log("Post failed");
+  });
+}
+```
+And now we need to build the back end.  We have created an object that should be pushed directly into the array on the back end.  Once we update the array, it should be permanent even if you refresh the browser.  Edit routes/index.js
+```javascript
+router.post('/pokemon', function(req, res) {
+    console.log("In Pokemon Post");
+    console.log(req.body);
+    pokemon.push(req.body);
+    res.end('{"success" : "Updated Successfully", "status" : 200}');
+}); 
+```
