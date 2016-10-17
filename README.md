@@ -2,16 +2,17 @@
 Simple introduction to creating a REST service and api with node
 
 We will show you how to take an existing application and put it into the express structure
-First create a new express server with
+First checkout this repository
+<pre>
+git clone https://github.com/mjcleme/node-api-server-tutorial.git
+</pre>
+
+Next, create a new express server with
 <pre>
 express poki
 cd poki
 npm install
-</pre>
-
-Then checkout this repository
-<pre>
-git clone https://github.com/mjcleme/node-api-server-tutorial.git
+cd ..
 </pre>
 
 Now copy the files into the correct places in the template
