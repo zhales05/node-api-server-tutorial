@@ -2,6 +2,7 @@
 Simple introduction to creating a REST service and api with node
 
 We will show you how to take an existing application and put it into the express structure
+
 First checkout this repository
 <pre>
 git clone https://github.com/mjcleme/node-api-server-tutorial.git
