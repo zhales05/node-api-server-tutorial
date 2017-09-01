@@ -83,7 +83,7 @@ Now, send back the array in your route
 res.send(pokemon);
 </pre>
 
-##CORS Issues
+## CORS Issues
 
 Some of you may want to access a REST service that doesnt have the CORS headers for your project.  Lets go through an example of how to do this
 
