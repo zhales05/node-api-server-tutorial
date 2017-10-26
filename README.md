@@ -161,7 +161,7 @@ And change our angular call to point to this route in public/javascripts/app.js
 var politics = "/politics";
 ```
 
-Then add a <ul> to display the results in index.html
+Then add some angular to display the results in index.html
 ```
 <ul ng-if='politics.length' >
   <li ng-repeat='trump in politics'>
