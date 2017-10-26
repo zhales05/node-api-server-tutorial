@@ -79,9 +79,9 @@ var pokemon = [
 ```
 
 Now, send back the array in your route
-<pre>
+```
 res.send(pokemon);
-</pre>
+```
 
 ## CORS Issues
 
@@ -137,9 +137,9 @@ You will get a CORS error on the console of your browser.
 So, lets make a proxy for this route in routes/index.js
 
 First add the request module to the top of your routes/index.js file
-<pre>
+```
 var request = require('request')
-</pre>
+```
 Then install the module
 <pre>
 npm install request --save
@@ -157,10 +157,17 @@ router.get('/politics', function(req,res) {
 Test the route by accessing the URL 'http://yourserver:3000/politics'
 
 And change our angular call to point to this route in public/javascripts/app.js
-<pre>
+```
 var politics = "/politics";
 </pre>
-
+Then add a <ul> to display the results in index.html
+<pre>
+<ul ng-if='politics.length' >
+  <li ng-repeat='trump in politics'>
+    {{ trump.Name }}
+  </li>
+</ul>
+```
 ## What about saving a new pokimon?
 
 First add a form to the public/index.html file.
@@ -189,6 +196,10 @@ $scope.addPoki = function() {
     console.log("Post failed");
   });
 }
+```
+Since we are using the $http service, we will need to inject it into our controller.
+```
+function mainCtrl ($scope, pokemonFetcher,$http) {
 ```
 And now we need to build the back end.  We have created an object that should be pushed directly into the array on the back end.  Once we update the array, it should be permanent even if you refresh the browser.  Edit routes/index.js
 ```javascript
