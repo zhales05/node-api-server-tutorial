@@ -159,9 +159,10 @@ Test the route by accessing the URL 'http://yourserver:3000/politics'
 And change our angular call to point to this route in public/javascripts/app.js
 ```
 var politics = "/politics";
-</pre>
+```
+
 Then add a <ul> to display the results in index.html
-<pre>
+```
 <ul ng-if='politics.length' >
   <li ng-repeat='trump in politics'>
     {{ trump.Name }}
@@ -210,3 +211,4 @@ router.post('/pokemon', function(req, res) {
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 }); 
 ```
+You should be able to refresh your browser and still see the new pokemon.
