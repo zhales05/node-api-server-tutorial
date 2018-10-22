@@ -8,6 +8,10 @@ First checkout this repository
 git clone https://github.com/mjcleme/node-api-server-tutorial.git
 </pre>
 
+If express is not already installed, install it
+<pre>
+sudo install -g express
+</pre>
 Next, create a new express server with
 <pre>
 express poki
