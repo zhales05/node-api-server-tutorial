@@ -3,6 +3,9 @@ Simple introduction to creating a REST service and api with node
 
 We will show you how to take an existing application and put it into the express structure
 
+## Creating the Front End
+We aren't going to have you build the front end, we will just have you check it out from git.
+
 First checkout this repository
 <pre>
 git clone https://github.com/mjcleme/node-api-server-tutorial.git
@@ -41,6 +44,8 @@ Make sure the server is running correctly by running
 npm start
 </pre>
 and accessing the URL 'http://yourserver:3000'
+
+If you havent opened port 3000, do so in your EC2 console.
 
 You should see that you havent set up the '/pokemon' route
 
