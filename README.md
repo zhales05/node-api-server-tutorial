@@ -65,7 +65,7 @@ If you havent opened port 4200, do so in your EC2 console.
 
 You should see that you havent set up the '/pokemon' route
 
-First add the route and make sure it works when you access 'http://yourserver:3000/pokemon'
+First add the route and make sure it works when you access 'http://yourserver:4200/pokemon'
 <pre>
 router.get('/pokemon', function(req, res) {
   console.log("In Pokemon");
