@@ -38,14 +38,24 @@ router.get('/', function(req, res) {
 </pre>
 
 ## Running the server
+You are going to run your server using the command "npm start".  This will run the script located in "bin/www"  The script will open the server on the port found in the "PORT" environment variable.  You can see the environment variables you have set by running
+<pre>
+env
+</pre>
+from the command line.
+
+Set your environment variable so that express will use port 4200 by the following command line 
+<pre>
+export PORT=4200
+</pre>
 
 Make sure the server is running correctly by running 
 <pre>
 npm start
 </pre>
-and accessing the URL 'http://yourserver:3000'
+and accessing the URL 'http://yourserver:4200'
 
-If you havent opened port 3000, do so in your EC2 console.
+If you havent opened port 4200, do so in your EC2 console.
 
 You should see that you havent set up the '/pokemon' route
 
