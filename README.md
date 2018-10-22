@@ -49,6 +49,12 @@ Set your environment variable so that express will use port 4200 by the followin
 export PORT=4200
 </pre>
 
+Now add a console.log so you can see which port you are using. Add this to "bin/www"
+<pre>
+var port = normalizePort(process.env.PORT || '3000');
+console.log("Starting on "+port);
+app.set('port', port);
+</pre>
 Make sure the server is running correctly by running 
 <pre>
 npm start
