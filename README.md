@@ -11,8 +11,9 @@ First checkout this repository
 git clone https://github.com/mjcleme/node-api-server-tutorial.git
 </pre>
 
-If express is not already installed, install it
+If express is not already installed, install it in the global location so you dont have to install it for every application you build.
 <pre>
+sudo npm install -g express-generator 
 sudo install -g express
 </pre>
 Next, create a new express server with
