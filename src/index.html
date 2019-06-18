@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
-<script src="javascripts/app.js"></script>
-<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
   <meta charset="utf-8">
-  <title>Node api tutorial</title>
+  <title>Pokemon</title>
 </head>
+
 <body>
-
-  <div id='app' ng-app='app' ng-controller='mainCtrl'>
-
-    <div ng-if='!pokemon.length' class='no-pokemon center stretch'>
+  <div id="app">
+    <div v-if='!pokis.length' class='no-pokemon center stretch'>
       <h1 class='h1'>
         Set up your endpoint at `/pokemon` to get this view working
       </h1>
     </div>
-
-    <ul ng-if='pokemon.length' class='list center stretch'>
-      <li ng-repeat='p in pokemon' class='pokemon'>
-        <h1>{{ p.name }}</h1>
-        <img class='avatar' ng-src="{{p.avatarUrl}}" />
-      </li>
-    </ul>
-
+    <div v-else>
+      <ul>
+        <li v-for="item in pokis">
+          <h1>{{ item.name }}</h1>
+          <img class='avatar' v-bind:src="item.avatarUrl" />
+        </li>
+      </ul>
+    </div>
   </div>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.2/dist/vue.js"></script>
+  <script src="javascripts/app.js"></script>
 </body>
+
 </html>
+
