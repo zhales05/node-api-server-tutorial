@@ -1,14 +1,14 @@
 # node-api-server-tutorial
-Simple introduction to creating a REST service and api with node
+This is a simple introduction to creating a REST service and api with node
 
-We will show you how to take an existing application and put it into the express structure
+We will show you how to create a simple REST back end
 
 ## Creating the Front End
 We aren't going to have you build the front end, we will just have you check it out from git.
 
 First checkout this repository
 <pre>
-git clone https://github.com/mjcleme/node-api-server-tutorial.git
+git clone https://github.com/BYUCS260/node-api-server-tutorial.git
 </pre>
 
 If express is not already installed, install it in the global location so you dont have to install it for every application you build.
@@ -117,46 +117,20 @@ Lets say we want to get information about candidates from 'https://zlzlap7j50.ex
 
 If we put the URL into our angular controller  at public/javascripts/app.js with something like
 ```javascript
-function pokemonFetcher ($http) {
-  
-  var API_ROOT = 'pokemon'
-  return {
-    get: function () {
-      return $http
-        .get(API_ROOT)
-        .then(function (resp) {
-          return resp.data
-        })
+    async getpolitics() {
+      // `this` points to the vm instance
+      console.log("politics");
+      var url = "https://zlzlap7j50.execute-api.us-east-1.amazonaws.com/prod"
+      try {
+        let response = await axios.get(url);
+        this.politics = response.data;
+        console.log(this.politics);
+        return true;
+      }
+      catch (error) {
+        console.log(error);
+      }
     },
-    tryit: function() {
-      var politics = "https://zlzlap7j50.execute-api.us-east-1.amazonaws.com/prod";
-      return $http
-        .get(politics)
-        .then(function (resp) {
-          console.log("Get Worked");
-          console.log(resp.data);
-          return resp.data
-        })
-    }
-  }
-
-}
-
-function mainCtrl ($scope, pokemonFetcher) {
-
-  $scope.pokemon = []
-
-  pokemonFetcher.get()
-    .then(function (data) {
-      $scope.pokemon = data
-    })
-
-  pokemonFetcher.tryit()
-    .then(function (data) {
-      console.log("tryit");
-      console.log(data);
-    })
-}
 ```
 You will get a CORS error on the console of your browser.
 
@@ -180,53 +154,51 @@ router.get('/politics', function(req,res) {
 });
 ```
 
-Test the route by accessing the URL 'http://yourserver:3000/politics'
+Test the route by accessing the URL 'http://yourserver:4200/politics'
 
-And change our angular call to point to this route in public/javascripts/app.js
+And change the axios call to point to this route in public/javascripts/app.js
 ```
-var politics = "/politics";
+var url = "http://yourserver:4200/politics";
 ```
 
-Then add some angular to display the results in index.html
+Then add some vue code to display the results in index.html
 ```
-<ul ng-if='politics.length' >
-  <li ng-repeat='trump in politics'>
-    {{ trump.Name }}
-  </li>
-</ul>
+    <div v-if='politics.length'>
+      <ul>
+        <li v-for="item in politics">
+          <h1>{{ item.Name }}</h1>
+        </li>
+      </ul>
+    </div>
 ```
 ## What about saving a new pokimon?
 
 First add a form to the public/index.html file.
 ```
-<h1> Enter A New Poki</h1>
-<form id="newPoki" ng-submit="addPoki()">
-  Name: <input type="text" ng-model="Name" value=""><br>
-  Url: <input type="url" ng-model="Url" value=""><br>
-  <input type="submit" value="Submit">
-</form>
+    <h1> Enter A New Poki</h1>
+    <form v-on:submit.prevent="addItem">
+      Name: <input type="text" v-model="pokiName">
+      URL: <input type="url" v-model="pokiURL">
+      <button type="submit">Add</button>
+    </form>
 ```
 
-And add the function to execute on the submit inside of MainCtrl
+And add the function to execute on the submit inside of app.js
 ```javascript
-$scope.addPoki = function() {
-  var formData = {name:$scope.Name,avatarUrl:$scope.Url};
-  console.log(formData);
-  var pokiURL = 'pokemon';
-  $http({
-     url: pokiURL,
-     method: "POST",
-     data: formData
-  }).success(function(data, status, headers, config) {
-    console.log("Post worked");
-  }).error(function(data, status, headers, config) {
-    console.log("Post failed");
-  });
-}
-```
-Since we are using the $http service, we will need to inject it into our controller.
-```
-function mainCtrl ($scope, pokemonFetcher,$http) {
+    addItem() {
+      var url = "http://yourserver:4200/pokemon";
+      axios.post(url, {
+          name: this.pokiName,
+          avatarUrl: this.pokiURL
+        })
+        .then(response => {})
+        .catch(e => {
+          console.log(e);
+        });
+      this.pokiName = '';
+      this.pokiURL = '';
+      this.getpokis();
+    },
 ```
 And now we need to build the back end.  We have created an object that should be pushed directly into the array on the back end.  Once we update the array, it should be permanent even if you refresh the browser.  Edit routes/index.js
 ```javascript
