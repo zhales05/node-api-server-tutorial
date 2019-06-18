@@ -1,29 +1,29 @@
-var app = window.angular.module('app', [])
-
-app.factory('pokemonFetcher', pokemonFetcher)
-app.controller('mainCtrl', mainCtrl)
-
-function pokemonFetcher ($http) {
-
-  var API_ROOT = 'pokemon'
-  return {
-    get: function () {
-      return $http
-        .get(API_ROOT)
-        .then(function (resp) {
-          return resp.data
-        })
-    }
+/*global axios */
+/*global Vue */
+var app = new Vue({
+  el: '#app',
+  data: {
+    pokis: [],
+    pokiName: '',
+    pokiURL: '',
+  },
+  created: function() {
+    this.getpokis();
+  },
+  methods: {
+    async getpokis() {
+      // `this` points to the vm instance
+      console.log("get pokis");
+      var url = "http://yourserver:4200/pokemon";
+      try {
+        let response = await axios.get(url);
+        this.pokis = response.data;
+        console.log(this.pokis);
+        return true;
+      }
+      catch (error) {
+        console.log(error);
+      }
+    },
   }
-
-}
-
-function mainCtrl ($scope, pokemonFetcher) {
-
-  $scope.pokemon = []
-
-  pokemonFetcher.get()
-    .then(function (data) {
-      $scope.pokemon = data
-    })
-}
+});
