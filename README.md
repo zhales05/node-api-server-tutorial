@@ -108,6 +108,7 @@ Now, send back the array in your route
 ```
 res.send(pokemon);
 ```
+Refresh your front end and you should be able to see the array of pokemon.
 
 ## CORS Issues
 
@@ -115,7 +116,7 @@ Some of you may want to access a REST service that doesnt have the CORS headers 
 
 Lets say we want to get information about candidates from 'https://zlzlap7j50.execute-api.us-east-1.amazonaws.com/prod'
 
-If we put the URL into our angular controller  at public/javascripts/app.js with something like
+If we put the URL into our vue javascript code  at public/javascripts/app.js with something like
 ```javascript
     async getpolitics() {
       // `this` points to the vm instance
@@ -131,6 +132,13 @@ If we put the URL into our angular controller  at public/javascripts/app.js with
         console.log(error);
       }
     },
+```
+and add a call to this function in the "created" function
+```javascript
+  created: function() {
+    this.getpokis();
+    this.getpolitics();
+  },
 ```
 You will get a CORS error on the console of your browser.
 
