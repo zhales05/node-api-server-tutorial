@@ -140,6 +140,15 @@ and add a call to this function in the "created" function
     this.getpolitics();
   },
 ```
+And add politics as an array in the data object
+```
+data: {
+    pokis: [],
+    politics:[],
+    pokiName: '',
+    pokiURL: '',
+  },
+```
 You will get a CORS error on the console of your browser.
 
 So, lets make a proxy for this route in routes/index.js
