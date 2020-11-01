@@ -3,6 +3,28 @@ This is a simple introduction to creating a REST service and api with node
 
 We will show you how to create a simple REST back end
 
+# Setting up nginx
+
+Before you will be able to get to your node.js server on a particular port, you will need to allow the browser to access that port through a proxy.  First edit your /etc/nginx/sites-available/default file and add the following proxy location.
+```
+        location /node {
+                proxy_pass http://localhost:3000;
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection 'upgrade';
+                proxy_set_header Host $host;
+                proxy_cache_bypass $http_upgrade;
+        }
+```
+Then test to make sure your nginx configuration is correct
+<pre>
+sudo nginx -t
+</pre>
+And if all is well, restart nginx
+<pre>
+sudo systemctl restart nginx
+</pre>
+
 ## Creating the Front End
 We aren't going to have you build the front end, we will just have you check it out from git.
 
@@ -33,7 +55,7 @@ cp node-api-server-tutorial/src/app.js  poki/public/javascripts/
 
 Now create a route to the index.html by editing routes/index.js to be
 <pre>
-router.get('/', function(req, res) {
+router.get('/node', function(req, res) {
   res.sendFile('index.html', { root: 'public' });
 });
 </pre>
@@ -45,9 +67,9 @@ env
 </pre>
 from the command line.
 
-Set your environment variable so that express will use port 4200 by the following command line 
+Set your environment variable so that express will use port 3000 by the following command line 
 <pre>
-export PORT=4200
+export PORT=3000
 </pre>
 
 Now add a console.log so you can see which port you are using. Add this to "bin/www"
@@ -60,15 +82,13 @@ Make sure the server is running correctly by running
 <pre>
 npm start
 </pre>
-and accessing the URL 'http://yourserver:4200'
-
-If you havent opened port 4200, do so in your EC2 console.
+and accessing the URL 'http://yourserver/node'
 
 You should see that you havent set up the '/pokemon' route
 
-First add the route and make sure it works when you access 'http://yourserver:4200/pokemon'
+First add the route and make sure it works when you access 'http://yourserver/node/pokemon'
 <pre>
-router.get('/pokemon', function(req, res) {
+router.get('/node/pokemon', function(req, res) {
   console.log("In Pokemon");
 });
 </pre>
@@ -203,7 +223,7 @@ First add a form to the public/index.html file.
 And add the function to execute on the submit inside of app.js
 ```javascript
     addItem() {
-      var url = "http://yourserver:4200/pokemon";
+      var url = "http://yourserver/node/pokemon";
       axios.post(url, {
           name: this.pokiName,
           avatarUrl: this.pokiURL
@@ -219,7 +239,7 @@ And add the function to execute on the submit inside of app.js
 ```
 And now we need to build the back end.  We have created an object that should be pushed directly into the array on the back end.  Once we update the array, it should be permanent even if you refresh the browser.  Edit routes/index.js
 ```javascript
-router.post('/pokemon', function(req, res) {
+router.post('/node/pokemon', function(req, res) {
     console.log("In Pokemon Post");
     console.log(req.body);
     pokemon.push(req.body);
