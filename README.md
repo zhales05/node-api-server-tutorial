@@ -191,11 +191,11 @@ router.get('/politics', function(req,res) {
 });
 ```
 
-Test the route by accessing the URL 'http://yourserver:4200/politics'
+Test the route by accessing the URL 'http://yourserver/node/politics'
 
 And change the axios call to point to this route in public/javascripts/app.js
 ```
-var url = "http://yourserver:4200/politics";
+var url = "http://yourserver/node/politics";
 ```
 
 Then add some vue code to display the results in index.html
