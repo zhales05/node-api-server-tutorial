@@ -55,7 +55,7 @@ cp node-api-server-tutorial/src/app.js  poki/public/javascripts/
 
 Now create a route to the index.html by editing routes/index.js to be
 <pre>
-router.get('/node', function(req, res) {
+router.get('/', function(req, res) {
   res.sendFile('index.html', { root: 'public' });
 });
 </pre>
@@ -82,13 +82,13 @@ Make sure the server is running correctly by running
 <pre>
 npm start
 </pre>
-and accessing the URL 'http://yourserver/node'
+and accessing the URL 'http://yourserver/'
 
 You should see that you havent set up the '/pokemon' route
 
-First add the route and make sure it works when you access 'http://yourserver/node/pokemon'
+First add the route and make sure it works when you access 'http://yourserver/pokemon'
 <pre>
-router.get('/node/pokemon', function(req, res) {
+router.get('/pokemon', function(req, res) {
   console.log("In Pokemon");
 });
 </pre>
@@ -191,7 +191,7 @@ router.get('/politics', function(req,res) {
 });
 ```
 
-Test the route by accessing the URL 'http://yourserver/node/politics'
+Test the route by accessing the URL 'http://yourserver/politics'
 
 And change the axios call to point to this route in public/javascripts/app.js
 ```
