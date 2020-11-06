@@ -7,7 +7,7 @@ We will show you how to create a simple REST back end
 
 You are welcome to run this tutorial on your laptop using Atom, but this section shows you how to make it run on your Digital Ocean server.  Before you will be able to get to your node.js server on a particular port, you will need to allow the browser to access that port through a proxy.  First edit your /etc/nginx/sites-available/default file and add the following proxy location.
 ```
-        location /node {
+        location / {
                 proxy_pass http://localhost:3000;
                 proxy_http_version 1.1;
                 proxy_set_header Upgrade $http_upgrade;
