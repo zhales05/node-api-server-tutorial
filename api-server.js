@@ -4,7 +4,7 @@
 var pokemon = [
   {
     name: 'Pikachu',
-    avatarUrl: 'http://rs795.pbsrc.com/albums/yy232/PixKaruumi/Pokemon%20Pixels/Pikachu_Icon__free__by_Aminako.gif~c200'
+    avatarUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png'
   },
   {
     name: 'Charmander',
@@ -17,7 +17,7 @@ var pokemon = [
   },
   {
     name: 'Cubone',
-    avatarUrl: 'http://rs1169.pbsrc.com/albums/r511/nthndo/tumblr_ljsx6dPMNm1qii50go1_400.gif~c200'
+    avatarUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/104.png'
   },
   {
     name: 'Cleffa',
