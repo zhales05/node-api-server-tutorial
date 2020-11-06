@@ -195,7 +195,7 @@ Test the route by accessing the URL 'http://yourserver/node/politics'
 
 And change the axios call to point to this route in public/javascripts/app.js
 ```
-var url = "http://yourserver/node/politics";
+var url = "http://yourserver/politics";
 ```
 
 Then add some vue code to display the results in index.html
@@ -223,7 +223,7 @@ First add a form to the public/index.html file.
 And add the function to execute on the submit inside of app.js
 ```javascript
     addItem() {
-      var url = "http://yourserver/node/pokemon";
+      var url = "http://yourserver/pokemon";
       axios.post(url, {
           name: this.pokiName,
           avatarUrl: this.pokiURL
@@ -239,7 +239,7 @@ And add the function to execute on the submit inside of app.js
 ```
 And now we need to build the back end.  We have created an object that should be pushed directly into the array on the back end.  Once we update the array, it should be permanent even if you refresh the browser.  Edit routes/index.js
 ```javascript
-router.post('/node/pokemon', function(req, res) {
+router.post('/pokemon', function(req, res) {
     console.log("In Pokemon Post");
     console.log(req.body);
     pokemon.push(req.body);
