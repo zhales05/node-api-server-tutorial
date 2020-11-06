@@ -1,30 +1,9 @@
 # node-api-server-tutorial
 This is a simple introduction to creating a REST service and api with node
 
-We will show you how to create a simple REST back end
+We will show you how to create a simple REST back end on your local machine using Atom.  You could move the code to your Digital Ocean server by configuring nginx to forward requests for a domain to port 3000.
 
-# Setting up nginx
-
-You are welcome to run this tutorial on your laptop using Atom, but this section shows you how to make it run on your Digital Ocean server.  Before you will be able to get to your node.js server on a particular port, you will need to allow the browser to access that port through a proxy.  First edit your /etc/nginx/sites-available/default file and add the following proxy location.
-```
-        location / {
-                proxy_pass http://localhost:3000;
-                proxy_http_version 1.1;
-                proxy_set_header Upgrade $http_upgrade;
-                proxy_set_header Connection 'upgrade';
-                proxy_set_header Host $host;
-                proxy_cache_bypass $http_upgrade;
-        }
-```
-Then test to make sure your nginx configuration is correct
-<pre>
-sudo nginx -t
-</pre>
-And if all is well, restart nginx
-<pre>
-sudo systemctl restart nginx
-</pre>
-
+This tutorial will assume you are runnin
 ## Creating the Front End
 We aren't going to have you build the front end, we will just have you check it out from git.
 
@@ -82,11 +61,11 @@ Make sure the server is running correctly by running
 <pre>
 npm start
 </pre>
-and accessing the URL 'http://yourserver/'
+and accessing the URL 'http://yourserver:3000/'
 
 You should see that you havent set up the '/pokemon' route
 
-First add the route and make sure it works when you access 'http://yourserver/pokemon'
+First add the route and make sure it works when you access 'http://yourserver:3000/pokemon'
 <pre>
 router.get('/pokemon', function(req, res) {
   console.log("In Pokemon");
@@ -191,11 +170,11 @@ router.get('/politics', function(req,res) {
 });
 ```
 
-Test the route by accessing the URL 'http://yourserver/politics'
+Test the route by accessing the URL 'http://yourserver:3000/politics'
 
 And change the axios call to point to this route in public/javascripts/app.js
 ```
-var url = "http://yourserver/politics";
+var url = "http://yourserver:3000/politics";
 ```
 
 Then add some vue code to display the results in index.html
@@ -223,7 +202,7 @@ First add a form to the public/index.html file.
 And add the function to execute on the submit inside of app.js
 ```javascript
     addItem() {
-      var url = "http://yourserver/pokemon";
+      var url = "http://yourserver:3000/pokemon";
       axios.post(url, {
           name: this.pokiName,
           avatarUrl: this.pokiURL
