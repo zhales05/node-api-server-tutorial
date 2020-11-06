@@ -61,11 +61,11 @@ Make sure the server is running correctly by running
 <pre>
 npm start
 </pre>
-and accessing the URL 'http://yourserver:3000/'
+and accessing the URL 'http://localhost:3000/'
 
 You should see that you havent set up the '/pokemon' route
 
-First add the route and make sure it works when you access 'http://yourserver:3000/pokemon'
+First add the route and make sure it works when you access 'http://localhost:3000/pokemon'
 <pre>
 router.get('/pokemon', function(req, res) {
   console.log("In Pokemon");
@@ -170,11 +170,11 @@ router.get('/politics', function(req,res) {
 });
 ```
 
-Test the route by accessing the URL 'http://yourserver:3000/politics'
+Test the route by accessing the URL 'http://localhost:3000/politics'
 
 And change the axios call to point to this route in public/javascripts/app.js
 ```
-var url = "http://yourserver:3000/politics";
+var url = "http://localhost:3000/politics";
 ```
 
 Then add some vue code to display the results in index.html
@@ -202,7 +202,7 @@ First add a form to the public/index.html file.
 And add the function to execute on the submit inside of app.js
 ```javascript
     addItem() {
-      var url = "http://yourserver:3000/pokemon";
+      var url = "http://localhost:3000/pokemon";
       axios.post(url, {
           name: this.pokiName,
           avatarUrl: this.pokiURL
